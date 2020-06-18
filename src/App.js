@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
 
-import logo from './logo.svg';
 import './App.css';
-
+import imgA from './success.png';
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      greeting: ''
+      result: false
     };
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({name: event.target.value});
-  }
 
   handleSubmit(event) {
     event.preventDefault();
-    fetch(`/api/greeting?name=${encodeURIComponent(this.state.name)}`)
+    fetch(`/api/greeting`)
         .then(response => response.json())
         .then(state => this.setState(state));
   }
@@ -29,29 +23,11 @@ class App extends Component {
     return (
         <div className="App">
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo"/>
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
             <form onSubmit={this.handleSubmit}>
-              <label htmlFor="name">Enter your name: </label>
-              <input
-                  id="name"
-                  type="text"
-                  value={this.state.name}
-                  onChange={this.handleChange}
-              />
-              <button type="submit">Submit</button>
+              <label htmlFor="name">프록시 서버를 연결한 후 확인을 눌러주세요 </label>
+              <button type="submit">확인</button>
             </form>
-            <p>{this.state.greeting}</p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
+            {this.state.result && <p>웹팩 개발 환경 구축 완성!!!<img src={imgA} /> </p>}
           </header>
         </div>
     );
