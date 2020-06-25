@@ -48,9 +48,8 @@ module.exports = {
             favicon: 'public/favicon.ico'
         })
     ],
-    devServer: {
-        proxy: {
-            '/api': 'http://localhost:8001', // 프록시
-        }
-    }
+    // TODO: 여기에 api 서버(localhost:8001) 프록싱 설정을 추가하세요
+    /**
+     * 설정 후,  yarn dev 명령어를 사용하세요
+     */
 };
