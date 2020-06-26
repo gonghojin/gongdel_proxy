@@ -67,7 +67,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "server": "node-env-run server --exec nodemon | pino-colada",
-    "dev": "NODE_ENV=development BABEL_ENV=development run-p server start"
+    "dev": "cross-env NODE_ENV=development BABEL_ENV=development run-p server start"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -86,6 +86,7 @@
   },
   "devDependencies": {
     "body-parse": "^0.1.0",
+    "cross-env": "^7.0.2",
     "express": "^4.17.1",
     "express-pino-logger": "^5.0.0",
     "node-env-run": "^3.0.2",
